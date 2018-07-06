@@ -1013,10 +1013,9 @@
         
         }
         //Menu hamburguer do mobile
-        $('.hamburguer-mobile').on('click', function(){
+        $('.hamburguer-mobile, .conheca-link, .espaco-link, .plano-link, .contatos-link').on('click', function(){
             $('.menu').toggleClass('show-menu');
-            $(this).toggleClass('close-hamburguer');
-            
+            $('.hamburguer-mobile').toggleClass('close-hamburguer');
         });
         var width = $(window).width();
 
