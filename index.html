@@ -999,7 +999,13 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHuJrhTbMgNj7Is1y7G4xGoNAFiNS8gqU&callback=myMap"></script>
     <script>
+    var menuOpen = false
     $(document).ready(function(){
+        function toggleLockBackground(){
+            menuOpen = !menuOpen
+            var hidden = menuOpen ? 'hidden' : 'visible'
+            $('body').css('overflow', hidden)
+        }
         
         if(window.width >= 1024){
 
@@ -1014,6 +1020,7 @@
         }
         //Menu hamburguer do mobile
         $('.hamburguer-mobile, .conheca-link, .espaco-link, .plano-link, .contatos-link').on('click', function(){
+            toggleLockBackground()
             $('.menu').toggleClass('show-menu');
             $('.hamburguer-mobile').toggleClass('close-hamburguer');
         });
@@ -1028,12 +1035,14 @@
         
         //Aparecer a descrição da pagina Conheça
         $('.box-padding-grid a').on('click', function(){
+            toggleLockBackground()
             var name = this.dataset.value
             $('.conheca .inter[data-value="'+ name +'"]').addClass('show-inter');
             $('.title-and-text-conheca, .box-padding-grid').addClass('remove');
         });
 
         $('.conheca .back').on('click', function(){
+            toggleLockBackground()
             $(this).closest('.inter').removeClass('show-inter');
             $('.title-and-text-conheca, .box-padding-grid').removeClass('remove');
         });
@@ -1041,11 +1050,13 @@
         
         //Aparecer a descrição da pagina O Espaço mobile
         $('.espaco .links-espaco a').on('click', function(e){
+            toggleLockBackground()
             var id = e.target.closest('a').id
             console.log(id)
             $('.espaco .inter[data-value="'+ id +'"]').addClass('show-inter');
         });
         $('.espaco .back').on('click', function(){
+            toggleLockBackground()
             $('.espaco .inter').removeClass('show-inter');
         });
         
@@ -1077,6 +1088,7 @@
         
         //Aparecer a descrição da pagina Planos
         $('.planos .planos-links').on('click', function(){
+            toggleLockBackground()
             var name = this.dataset.value
             $('.planos .inter[data-value="'+ name +'"]').addClass('show-inter');
 
@@ -1085,6 +1097,7 @@
             }
         });
         $('.planos .back').on('click', function(){
+            toggleLockBackground()
             $(this).closest('.inter').removeClass('show-inter');
             $('.planos .grid-middle').removeClass('remove-planos');
         });
