@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/* 
+    Este é um arquivo de exemplo para mostrar como fazer um import no SASS.
+    Remover este arquivo após o seu entendimento
+*/
+.g-vertical, .g-horizontal {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  position: fixed;
+  z-index: 1;
+  pointer-events: none; }
+
+.g-vertical {
+  grid-template-columns: repeat(3, 1fr); }
+  .g-vertical .lines-grid:nth-child(2) {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 0;
+    border-bottom: 0; }
+
+.g-horizontal {
+  grid-template-rows: repeat(3, 1fr); }
+  .g-horizontal .lines-grid:nth-child(2) {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 0;
+    border-right: 0; }

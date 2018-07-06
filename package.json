@@ -1,0 +1,20 @@
+{
+  "name": "emwork",
+  "version": "1.0.0",
+  "description": "Coworking da emwork",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dayan Barros",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.24.4",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

@@ -1,0 +1,36 @@
+$preto: #000;
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Montserrat:300,400,700|Philosopher:700');
+
+$branco: #fff;
+$verde: #46E0CA;
+$cinza: #9B9B9B;
+
+$font-logo: 'Philosopher', sans-serif;
+$font-titulo: 'Fjalla One', sans-serif;
+$font-texto: 'Montserrat', sans-serif;
+
+$transition: all .5s ease;
+
+%ba {
+    width: 0.0625rem;
+    left: calc(50% - 1px);
+}
+
+@mixin beforeafter {
+    content: ' ';
+    display: block;
+    position: absolute;
+}
+
+@mixin text {
+    color: $branco;
+    font-family: $font-texto;
+    line-height: 1.5rem;
+    letter-spacing: 0.125rem;
+}
+
+@mixin background($url) {
+    background-image: url($url);
+    background-position: center;
+    background-size: cover;
+}
