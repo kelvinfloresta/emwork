@@ -401,10 +401,34 @@ header {
           color: #fff;
           text-transform: uppercase;
           text-align: center;
-          padding: 0.3125rem 2.063rem; }
+          padding: 0.3125rem 2.063rem;
+          position: relative;
+          transition: all 0.5s ease; }
           header .menu ul li a:active {
             background-color: #fff;
             color: #000; }
+        header .menu ul li .active:after {
+          width: 1px;
+          height: 25px;
+          background-color: #fff;
+          right: 0;
+          bottom: 0;
+          animation: showActiveMenuAfter .5s ease 1;
+          transition: all 0.5s ease;
+          content: ' ';
+          display: block;
+          position: absolute; }
+        header .menu ul li .active:before {
+          width: 75px;
+          height: 1px;
+          background-color: #fff;
+          right: 0;
+          bottom: 0;
+          animation: showActiveMenuBefore .5s ease 1;
+          transition: all 0.5s ease;
+          content: ' ';
+          display: block;
+          position: absolute; }
   header .show-menu {
     left: 0; }
   header .close-hamburguer i {
@@ -417,6 +441,18 @@ header {
     header .close-hamburguer i:nth-child(3) {
       transform: rotate(-45deg);
       top: -5px; }
+
+@keyframes showActiveMenuAfter {
+  from {
+    height: 0; }
+  to {
+    height: 25px; } }
+
+@keyframes showActiveMenuBefore {
+  from {
+    width: 0; }
+  to {
+    width: 75px; } }
 
 @media screen and (min-width: 768px) {
   header {
@@ -459,7 +495,11 @@ header {
     transition: all 0.5s ease; }
     header .menu ul li a:hover {
       box-shadow: inset -135px 0px 0px white;
-      color: #000; } }
+      color: #000; }
+      header .menu ul li a:hover:after {
+        height: 0; }
+      header .menu ul li a:hover:before {
+        width: 0; } }
 
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -1068,6 +1108,10 @@ a {
         padding: 9px 30px; }
         .espaco .grid-conheca-titulo .floors a:last-child {
           margin-left: 0.9375rem; }
+      .espaco .grid-conheca-titulo .floors .active {
+        background-color: #fff;
+        color: #000;
+        opacity: .7; }
   .espaco .links-espaco {
     font-size: 1.25rem;
     text-transform: uppercase;
@@ -1109,6 +1153,8 @@ a {
     opacity: 1; }
 
 .box-planta {
+  width: 472px;
+  height: 460px;
   display: none;
   position: absolute;
   top: 50%;
@@ -1116,9 +1162,20 @@ a {
   right: 0px;
   z-index: 2; }
 
-.planta-svg {
+.cobertura {
   width: 472px;
   height: 460px; }
+
+.decimo-quinto {
+  width: 302px;
+  height: 234px; }
+
+.planta-svg {
+  transform: scale(0.8);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+  position: absolute; }
   .planta-svg .path-planta {
     fill: #fff;
     transition: all 0.5s ease; }
@@ -1145,6 +1202,18 @@ a {
     transform: scale(1.5) translate(25%, -12%); }
   .planta-svg #room8:hover .path-planta {
     transform: scale(1.5) translate(25%, -22%); }
+  .planta-svg #room9:hover .path-planta {
+    transform: scale(1.5) translate(-48%, -47%); }
+  .planta-svg #room10:hover .path-planta {
+    transform: scale(1.5) translate(-26%, -52%); }
+  .planta-svg #room11:hover .path-planta {
+    transform: scale(1.5) translate(-3%, -51%); }
+  .planta-svg #room12:hover .path-planta {
+    transform: scale(1.5) translate(21%, -48%); }
+  .planta-svg #room13:hover .path-planta {
+    transform: scale(1.5) translate(0%, -24%); }
+  .planta-svg #room14:hover .path-planta {
+    transform: scale(1.5) translate(23%, -16%); }
   .planta-svg #reunion:hover .path-planta {
     transform: scale(1.5) translate(20%, 20%); }
   .planta-svg #cook:hover .path-planta {
@@ -1155,6 +1224,19 @@ a {
     transform: scale(1.5) translate(-30%, 20%); }
   .planta-svg #coworking:hover .path-planta {
     transform: scale(1.5) translate(-44%, -17%); }
+  .planta-svg #reunion-small:hover .path-planta {
+    transform: scale(1.5) translate(19%, 15%); }
+  .planta-svg #cop:hover .path-planta {
+    transform: scale(1.5) translate(-4%, 13%); }
+  .planta-svg #recep:hover .path-planta {
+    transform: scale(1.5) translate(-48%, -16%); }
+  .planta-svg #attendant:hover .path-planta {
+    transform: scale(1.5) translate(-22%, -1%); }
+
+.planta-svg.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1); }
 
 .planos {
   min-height: 100vh;
@@ -1471,7 +1553,8 @@ footer {
           left: -20%;
           margin: 0;
           opacity: 0;
-          pointer-events: none; }
+          pointer-events: none;
+          transition: all 0.5s ease; }
         .conheca .black-box-conheca .inter h3 {
           font-family: "Montserrat", sans-serif;
           font-size: 5.625rem;
@@ -1606,7 +1689,9 @@ footer {
       opacity: 0;
       pointer-events: none; }
   .box-planta {
-    display: block; }
+    display: flex;
+    justify-content: center;
+    align-items: center; }
   .planos {
     min-height: 100vh;
     display: grid;
