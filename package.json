@@ -7,13 +7,9 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Dayan Barros",
+  "author": "Kelvin Floresta de Andrade",
   "license": "ISC",
-  "devDependencies": {
-    "browser-sync": "^2.24.4",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^4.0.1"
-  },
+  "devDependencies": {},
   "dependencies": {
     "express": "^4.16.3"
   }
