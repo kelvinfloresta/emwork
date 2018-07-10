@@ -911,7 +911,8 @@
 
             <a role="button" class="scroll-button">Scroll</a>
         </section>
-        <footer id="contato" data-hash="contato" class="contato section">
+        <section id="contato" data-hash="contato" class="section">
+        <footer class="contato">
             <div class="contact-footer">
                 <div class="contact">
                     <div class="title-contact">Entraremos em contato</div>
@@ -981,6 +982,7 @@
                 <a href="">Termos de uso</a>
             </div>
         </footer>
+        </section>
     </div>
 
     <script src="./js/jquery.min.js"></script>
@@ -999,23 +1001,48 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHuJrhTbMgNj7Is1y7G4xGoNAFiNS8gqU&callback=myMap"></script>
     <script>
-    var menuOpen = false
     $(document).ready(function(){
+        var width = $(window).width();
+        var isMobile = width < 1024
+        var menuOpen = false
+        var ee = new EventEmitter();
+
         function toggleLockBackground(){
             menuOpen = !menuOpen
-            var hidden = menuOpen ? 'hidden' : 'visible'
+            var hidden = isMobile && menuOpen ? 'hidden' : 'visible'
             $('body').css('overflow', hidden)
         }
-        
-        if(window.width >= 1024){
 
-        var options = {
-            mode: "vp", // "vp", "set"
-            sectionWrapperSelector: ".wrapper",
-            sectionClass: "section",
-            animationSpeed: 500,
-        };
-        $.smartscroll(options);
+        //Ativa os links do menu
+        if(!isMobile){
+            $(window).on('hashchange', function() {
+                var hash = window.location.hash
+                var a = $(".menu a")
+                        .removeClass('active')
+                        .filter('a[href="'+ hash +'"]')
+                        .addClass('active')	
+            });
+        }
+
+        //Fecha todos os Menus ao scrollar a página, exceto no mobile	
+        if(!isMobile){	
+            $(window).on('scroll', function(){	
+                $('.inter').removeClass('show-inter')	
+                $('.planos .grid-middle').removeClass('remove-planos');	
+                $('.title-and-text-conheca, .box-padding-grid').removeClass('remove');	
+            })	
+        }
+
+        if(!isMobile){
+            var options = {	
+                mode: "vp", // "vp", "set"	
+                sectionWrapperSelector: ".wrapper",	
+                sectionClass: "section",	
+                animationSpeed: 500,	
+                eventEmitter: ee,	
+                autoHash:true	
+            };	
+            $.smartscroll(options);
         
         }
         //Menu hamburguer do mobile
