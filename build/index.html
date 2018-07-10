@@ -911,8 +911,7 @@
 
             <a role="button" class="scroll-button">Scroll</a>
         </section>
-        <section id="contato" data-hash="contato" class="section">
-        <footer class="contato">
+        <footer id="contato" data-hash="contato" class="contato section">
             <div class="contact-footer">
                 <div class="contact">
                     <div class="title-contact">Entraremos em contato</div>
@@ -982,7 +981,6 @@
                 <a href="">Termos de uso</a>
             </div>
         </footer>
-    </section>
     </div>
 
     <script src="./js/jquery.min.js"></script>
@@ -1001,49 +999,23 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHuJrhTbMgNj7Is1y7G4xGoNAFiNS8gqU&callback=myMap"></script>
     <script>
-        $(document).ready(function(){
-            var width = $(window).width();
-            var isMobile = width < 1024
-            var menuOpen = false
-            var ee = new EventEmitter();
-        
-        //Trava o body para não scrollar no mobile. Utilizado para travar a tela ao abrir qualquer menu
+    var menuOpen = false
+    $(document).ready(function(){
         function toggleLockBackground(){
             menuOpen = !menuOpen
-            var hidden = isMobile && menuOpen ? 'hidden' : 'visible'
+            var hidden = menuOpen ? 'hidden' : 'visible'
             $('body').css('overflow', hidden)
         }
+        
+        if(window.width >= 1024){
 
-        //Ativa os links do menu
-        if(!isMobile){
-            $(window).on('hashchange', function() {
-                var hash = window.location.hash
-                var a = $(".menu a")
-                        .removeClass('active')
-                        .filter('a[href="'+ hash +'"]')
-                        .addClass('active')
-            });
-        }
-
-        //Fecha todos os Menus ao scrollar a página, exceto no mobile
-        if(!isMobile){
-            $(window).on('scroll', function(){
-                $('.inter').removeClass('show-inter')
-                $('.planos .grid-middle').removeClass('remove-planos');
-                $('.title-and-text-conheca, .box-padding-grid').removeClass('remove');
-            })
-        }
-
-        if(!isMobile){
-            var options = {
-                mode: "vp", // "vp", "set"
-                sectionWrapperSelector: ".wrapper",
-                sectionClass: "section",
-                animationSpeed: 500,
-                eventEmitter: ee,
-                autoHash:true
-            };
-            $.smartscroll(options);
+        var options = {
+            mode: "vp", // "vp", "set"
+            sectionWrapperSelector: ".wrapper",
+            sectionClass: "section",
+            animationSpeed: 500,
+        };
+        $.smartscroll(options);
         
         }
         //Menu hamburguer do mobile
@@ -1052,7 +1024,7 @@
             $('.menu').toggleClass('show-menu');
             $('.hamburguer-mobile').toggleClass('close-hamburguer');
         });
-
+        var width = $(window).width();
 
         $(window).resize(function(){
             if(width >= 768){
@@ -1069,7 +1041,7 @@
             $('.title-and-text-conheca, .box-padding-grid').addClass('remove');
         });
 
-        $('.conheca .back').on('click', function(e){
+        $('.conheca .back').on('click', function(){
             toggleLockBackground()
             $(this).closest('.inter').removeClass('show-inter');
             $('.title-and-text-conheca, .box-padding-grid').removeClass('remove');
@@ -1080,6 +1052,7 @@
         $('.espaco .links-espaco a').on('click', function(e){
             toggleLockBackground()
             var id = e.target.closest('a').id
+            console.log(id)
             $('.espaco .inter[data-value="'+ id +'"]').addClass('show-inter');
         });
         $('.espaco .back').on('click', function(){
