@@ -1002,6 +1002,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHuJrhTbMgNj7Is1y7G4xGoNAFiNS8gqU&callback=myMap"></script>
     <script>
     $(document).ready(function(){
+        
         var width = $(window).width();
         var isMobile = width < 1024
         var menuOpen = false
@@ -1034,16 +1035,18 @@
         }
 
         if(!isMobile){
-            var options = {	
-                mode: "vp", // "vp", "set"	
-                sectionWrapperSelector: ".wrapper",	
-                sectionClass: "section",	
-                animationSpeed: 500,	
-                eventEmitter: ee,	
-                autoHash:true	
-            };	
-            $.smartscroll(options);
-        
+            $('img').ready(function(){
+                var options = {	
+                    mode: "vp", // "vp", "set"	
+                    sectionWrapperSelector: ".wrapper",	
+                    sectionClass: "section",	
+                    animationSpeed: 500,	
+                    eventEmitter: ee,	
+                    autoHash:true	
+                };	
+                $.smartscroll(options);
+            })
+                
         }
         //Menu hamburguer do mobile
         $('.hamburguer-mobile, .conheca-link, .espaco-link, .plano-link, .contatos-link').on('click', function(){
@@ -1079,7 +1082,6 @@
         $('.espaco .links-espaco a').on('click', function(e){
             toggleLockBackground()
             var id = e.target.closest('a').id
-            console.log(id)
             $('.espaco .inter[data-value="'+ id +'"]').addClass('show-inter');
         });
         $('.espaco .back').on('click', function(){
@@ -1128,16 +1130,6 @@
             $(this).closest('.inter').removeClass('show-inter');
             $('.planos .grid-middle').removeClass('remove-planos');
         });
-
-        /* 
-        $('.menu a').on('click', function(){
-			$('body, html').animate({
-				scrollTop: $('').offset().top
-			},800);
-		}); */
-
-
-        // animation scroll
 
         // Select all links with hashes
         $('a[href*="#"]')
