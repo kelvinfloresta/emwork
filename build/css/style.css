@@ -993,7 +993,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("../img/first-img.jpg");
+  background-image: url("../../img/first-img.jpg");
   background-position: center;
   background-size: cover;
   background-position: center;
@@ -1004,7 +1004,7 @@ a {
 
 .conheca {
   min-height: 100vh;
-  background-image: url("../img/second-img.jpg");
+  background-image: url("../../img/second-img.jpg");
   background-position: center;
   background-size: cover;
   background-position: center;
@@ -1167,7 +1167,7 @@ a {
     content: ' ';
     display: block;
     position: absolute;
-    background-image: url("../img/tirth-img.png");
+    background-image: url("../../img/tirth-img.png");
     background-position: center;
     background-size: cover; }
   .planos .grid-middle {
@@ -1254,10 +1254,7 @@ a {
 footer {
   min-height: 100vh;
   display: grid;
-  grid-template-areas: "contato"
- "numero"
- "social"
- "endereco";
+  grid-template-areas: "contato" "numero" "social" "endereco";
   padding-top: 6.063rem; }
   footer .social-buttons {
     grid-area: social;
@@ -1427,19 +1424,19 @@ footer {
                 position: absolute;
                 z-index: -1; }
               .conheca .black-box-conheca .box-padding-grid ul li a.hotdesk:after {
-                background-image: url("../img/hotdesk.png");
+                background-image: url("../../img/hotdesk.png");
                 background-position: center;
                 background-size: cover; }
               .conheca .black-box-conheca .box-padding-grid ul li a.escritorios:after {
-                background-image: url("../img/hotdesk.png");
+                background-image: url("../../img/hotdesk.png");
                 background-position: center;
                 background-size: cover; }
               .conheca .black-box-conheca .box-padding-grid ul li a.contabilidade:after {
-                background-image: url("../img/hotdesk.png");
+                background-image: url("../../img/hotdesk.png");
                 background-position: center;
                 background-size: cover; }
               .conheca .black-box-conheca .box-padding-grid ul li a.reuniao:after {
-                background-image: url("../img/hotdesk.png");
+                background-image: url("../../img/hotdesk.png");
                 background-position: center;
                 background-size: cover; }
               .conheca .black-box-conheca .box-padding-grid ul li a:hover:after {
@@ -1569,9 +1566,7 @@ footer {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
-      grid-template-areas: ". . ."
- ". . ."
- "map end .";
+      grid-template-areas: ". . ." ". . ." "map end .";
       position: absolute;
       top: 0;
       transition: all 0.5s ease; }
@@ -1587,7 +1582,7 @@ footer {
           width: 100%;
           height: 100%;
           position: absolute;
-          background-image: url("../img/mapa.png");
+          background-image: url("../../img/mapa.png");
           background-position: center;
           background-size: cover;
           transition: all 0.5s ease;
@@ -1658,9 +1653,7 @@ footer {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
-      grid-template-areas: ". . ."
- "contatoPlanos titlePlanos numerosPlanos"
- "fotoPlanos . .";
+      grid-template-areas: ". . ." "contatoPlanos titlePlanos numerosPlanos" "fotoPlanos . .";
       background-color: transparent;
       position: absolute;
       padding-top: 0; }
@@ -1721,9 +1714,7 @@ footer {
   footer {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    grid-template-areas: ". . ."
- "contato . social"
- "endereco . numero";
+    grid-template-areas: ". . ." "contato . social" "endereco . numero";
     padding: 0;
     position: relative; }
     footer .contact-footer {

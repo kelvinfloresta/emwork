@@ -1,0 +1,261 @@
+@import "custom-normalize";
+@import "variables";
+
+* { margin: 0; padding: 0; box-sizing: border-box; text-decoration: none; list-style: none; }
+
+.wrapper {
+    background-color: $preto;   
+}
+h1 { 
+    font-family: $font-titulo;
+    font-size: 2.625rem;
+    color: $verde;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+
+h2 {
+    font-family: $font-texto;
+    font-size: 1rem;
+    color: $branco;
+    font-weight: 100;
+    text-transform: uppercase;
+    margin-top: 0.125rem;
+}
+
+h3 {
+    font-family: $font-titulo;
+    font-size: 1.875rem;
+    color: $branco;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 0.3125rem;
+}
+
+p {
+    width: 80%;    
+    font-size: 0.875rem;    
+    text-align: center;
+    opacity: .5;
+    @include text();
+}
+
+a {
+    cursor: pointer;
+}
+
+.scroll-button {
+    font-family: $font-texto;
+    font-size: 0.875rem;
+    color: $branco;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 3.125rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+
+    &:after {
+        height: 0;            
+        animation: scrollLineA 1.5s ease infinite;   
+        background-color: $branco;
+        top: 1.65rem;
+        @extend %ba;
+        @include beforeafter();
+
+     }
+     &:before {
+        opacity: 0;
+        height: 2.5rem;
+        animation: scrollLineB 1.5s ease infinite;   
+        background-color: $branco;
+        bottom: -3.125rem;
+        @extend %ba;
+        @include beforeafter();
+
+     }
+}
+
+@keyframes scrollLineA {
+    from { height: 0; opacity: 1; }
+    50% { height: 2.5rem; opacity: 1; }
+    51% { opacity: 0; }
+    to { height: 2.5rem; opacity: 0;}
+}
+
+@keyframes scrollLineB {
+    from { height: 2.5rem; opacity: 0; }
+    50% { height: 2.5rem; opacity: 0; }
+    51% { opacity: 1; }
+    to { height: 0; opacity: 1; }
+}
+
+.inter {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $preto;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    padding-top: 6.063rem;
+    transition: $transition;
+    z-index: 2;
+    
+    .back {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        cursor: pointer;
+
+        .circle {
+            width: 2.25rem;
+            height: 2.25rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid $branco;
+            border-radius: 50%;
+            
+            svg {
+                width: 19px;
+                height: 9px;
+
+                .arrow {
+                    fill:#FFFFFF;
+                }
+            }
+        }
+        span {
+            display: none;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            @include text();
+        }
+    }
+    figure {
+        width: 100%;
+        height: 13.13rem;
+        overflow: hidden;
+        margin: 1.875rem 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+    }
+}
+
+.show-inter {
+    right: 0;
+}
+
+.number {
+    grid-area: numero;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 0;
+
+    p {
+        font-size: 0.875rem;
+        opacity: .8;
+        
+        span {
+            display: none;
+        }
+    }
+}
+
+.contact {
+    padding: 0 25px;
+
+    .title-contact {
+        font-family: $font-texto;
+        font-size: 1rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: $branco;
+    }
+    .subtitle-contact {
+        font-family: $font-texto;
+        font-size: 0.875rem;
+        color: $verde;
+    }
+    form {
+        margin-top: 25px;
+
+        input {
+            width: 100%;
+            height: 32px;
+            font-family: $font-texto;
+            color: $branco;
+            background-color: transparent;
+            border: 1px solid $branco;
+            border-right: 0;
+            border-top: 0;
+            padding-left: 20px;
+            outline: none;
+
+            &:nth-child(2) { margin-top: 20px; }
+        }
+    }
+}
+
+@media screen and (min-width: 768px){
+    h1 {
+        font-size: 3.0rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+        margin-top: 0.3rem;
+    }
+
+    h3 {
+        font-size: 2.813rem;
+    }
+    
+    p {
+        font-size: 1.188rem;    
+        @include text();
+    }
+}
+
+@media screen and (min-width: 1024px){
+
+    .number {
+
+        p {
+            text-align: right;
+            span {
+                display: inline-block;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+
+        form {
+            input {
+                max-width: 370px;    
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1880px) {
+    h3 {
+        font-size: 3.75rem;
+    }
+}
